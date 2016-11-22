@@ -109,8 +109,23 @@ def brute_force_cow_transport(cows,limit=10):
     trips
     """
     # TODO: Your code here
-    pass
+    def addweight(cows):
+        sum = 0
+        for cow in cows:
+            sum += cows[cow]
+        return sum    
 
+    keys = list(cows)
+    for item in (get_partitions(keys)):
+        overweight = False
+        for sublist in item:
+            weight = 0
+            for i in sublist:
+                weight += cows[i]
+            if weight > limit:
+                overweight = True
+        if overweight == False:
+             return item
         
 # Problem 3
 def compare_cow_transport_algorithms():
